@@ -1,7 +1,7 @@
-# [极客教程](https://wwww.geekjc.com)版本
+# [极客教程](https://wwww.geekjc.com)mobile版本
 基于的技术栈:
 
-## 本模板包含\用到的所有包，下面将介绍 **额外** 添加的包
+## 本模板包含用到的所有包，下面将介绍 **额外** 添加的包
 
 #### [redux](https://github.com/reactjs/redux) [必需]
 > Redux 是 JavsScript 状态容器，提供可预测化的状态管理  
