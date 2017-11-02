@@ -12,6 +12,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const pxtorem = require('postcss-pxtorem');
+const theme = require('../package.json').theme;
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -29,7 +30,7 @@ const env = getClientEnvironment(publicUrl);
 module.exports = {
   // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
   // See the discussion in https://github.com/facebookincubator/create-react-app/issues/343.
-  devtool: 'cheap-module-source-map',
+  devtool: '#source-map',
   // These are the "entry points" to our application.
   // This means they will be the "root" imports that are included in JS bundle.
   // The first two entry points enable "hot" CSS and auto-refreshes for JS.
@@ -148,6 +149,7 @@ module.exports = {
             loader: require.resolve('babel-loader'),
             options: {
               plugins: [
+                "transform-decorators-legacy",
                 ['import', { libraryName: 'antd-mobile', style: true }],
               ],
               // This is a feature of `babel-loader` for webpack (not Babel itself).
@@ -232,7 +234,7 @@ module.exports = {
               {
                 loader: require.resolve('less-loader'),
                 options: {
-                  modifyVars: { "@primary-color": "#1DA57A" },
+                  modifyVars: theme
                 },
               },
             ],
