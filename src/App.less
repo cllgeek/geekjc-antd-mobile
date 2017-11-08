@@ -1,4 +1,30 @@
 @import "~antd-mobile/dist/antd-mobile.less";
+@import "./highLight.less";
+
+* {
+    margin: 0;
+    padding: 0
+}
+em,i {
+    font-style: normal
+}
+li {
+    list-style: none
+}
+img {
+    border: 0;
+    vertical-align: middle
+}
+button {
+    cursor: pointer
+}
+a {
+    color: #666;
+    text-decoration: none
+}
+a:hover {
+    color: #c81623
+}
 
 .App {
   text-align: center;
@@ -47,4 +73,11 @@
 }
 .am-search-input{
   background-color: #F3F5F7
+}
+.am-tabs-tab-bar-wrap:first-child{
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 91px;
+  z-index: 9999
 }

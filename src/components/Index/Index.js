@@ -3,7 +3,7 @@ import { Flex,SearchBar,WingBlank } from 'antd-mobile'
 
 import './Index.less'
 
-import Article from '../Article/Article'
+import ArticleList from '../ArticleList/ArticleList'
 
 class Index extends React.Component{
 	constructor(props){
@@ -27,7 +27,7 @@ class Index extends React.Component{
 				  </Flex>
 			  </WingBlank>
             </div>
-            <Article />
+            <ArticleList />
 		  </div>
 		)
 	}

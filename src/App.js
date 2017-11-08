@@ -1,7 +1,9 @@
 import React from 'react'
 import {BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom'//导入的方式跟之前有点变化
 
-import { Tabs } from './components'
+import { Tabs,ArticleDetail } from './components'
+
+
 
 import './App.less'
 
@@ -55,7 +57,7 @@ const RouterList = () => (
         <div>
             <Switch>
               <Route exact path="/" component={Tabs}/>
-              <Route path="/two" component={Two}/>
+              <Route path="/article/:id/:type" component={ArticleDetail}/>
               <Route path="/Lists" component={List}/>
             </Switch>
         </div>

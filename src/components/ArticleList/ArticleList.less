@@ -1,0 +1,41 @@
+@primary-color: #8b8b8b;
+
+.articleListContainer{
+  margin-top: 5px;
+  background-color: #fff;
+
+  .articleListUl{
+     height: 1500px;
+     margin-top: 180px;
+  }
+  .articleListLi{
+    padding: 30px 20px;
+    border-bottom: 1px solid #f5f5f9;
+    font-size: 28px;
+    color: @primary-color
+  }
+  .articleListTitle{
+    display: block;
+    margin: 10px 0;
+    color: #000;
+    font-size: 36px;
+  }
+  .articleListDescribe{
+    display: inline-block;
+    color: @primary-color;
+    font-size: 30px;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+
+    h1,h2,h3,h4{
+      font-size: 30px;
+    }
+  }
+  .articleListFooter{
+    margin-top: 30px;
+  }
+  .readAll{
+    float: right;
+    color: rgba(24,37,50,.2);
+  }
+}

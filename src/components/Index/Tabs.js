@@ -15,27 +15,7 @@ export default class Tabs extends React.Component {
   renderContent(pageText) {
     return (
       <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-        <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
-        <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              hidden: !this.state.hidden,
-            });
-          }}
-        >
-          Click to show/hide tab-bar
-        </a>
-        <a style={{ display: 'block', marginBottom: 600, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              fullScreen: !this.state.fullScreen,
-            });
-          }}
-        >
-          Click to switch fullscreen
-        </a>
+        hello,world! 暂无内容!
       </div>
     );
   }
@@ -70,22 +50,13 @@ export default class Tabs extends React.Component {
           </TabBar.Item>
           <TabBar.Item
             icon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
-              />
+              <CustomIcon type={require('../../svg/index.svg')} size="xxs" />
             }
             selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
-              />
+              <CustomIcon type={require('../../svg/indexActive.svg')} size="xxs" />
             }
-            title="Koubei"
-            key="Koubei"
-            badge={'new'}
+            title="暂无"
+            key="none1"
             selected={this.state.selectedTab === 'redTab'}
             onPress={() => {
               this.setState({
@@ -94,25 +65,17 @@ export default class Tabs extends React.Component {
             }}
             data-seed="logId1"
           >
-            {this.renderContent('Koubei')}
+            {this.renderContent('none1')}
           </TabBar.Item>
           <TabBar.Item
             icon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
-              />
+              <CustomIcon type={require('../../svg/index.svg')} size="xxs" />
             }
             selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
-              />
+              <CustomIcon type={require('../../svg/indexActive.svg')} size="xxs" />
             }
-            title="Friend"
-            key="Friend"
+            title="暂无"
+            key="none2"
             dot
             selected={this.state.selectedTab === 'greenTab'}
             onPress={() => {
@@ -121,25 +84,17 @@ export default class Tabs extends React.Component {
               });
             }}
           >
-            {this.renderContent('Friend')}
+            {this.renderContent('none2')}
           </TabBar.Item>
           <TabBar.Item
             icon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
-              />
+              <CustomIcon type={require('../../svg/index.svg')} size="xxs" />
             }
             selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
-              />
+              <CustomIcon type={require('../../svg/indexActive.svg')} size="xxs" />
             }
-            title="我的"
-            key="my"
+            title="暂无"
+            key="none3"
             selected={this.state.selectedTab === 'yellowTab'}
             onPress={() => {
               this.setState({
@@ -147,7 +102,7 @@ export default class Tabs extends React.Component {
               });
             }}
           >
-            {this.renderContent('My')}
+            {this.renderContent('none3')}
           </TabBar.Item>
         </TabBar>
       </div>
