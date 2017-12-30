@@ -38,13 +38,13 @@ class ArticleDetail extends Component{
 		return(
           <div>
             <NavBar
-							mode="light"
-							icon={<Icon type="left" />}
-							onLeftClick={() => this.props.history.push('/')}
-							rightContent={[
-								<Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-								<Icon key="1" type="ellipsis" />,
-							]}
+				mode="light"
+				icon={<Icon type="left" />}
+				onLeftClick={() => this.props.history.push('/')}
+				rightContent={[
+					<Icon key="0" type="search" style={{ marginRight: '16px' }} />,
+					<Icon key="1" type="ellipsis" />,
+				]}
 		    ></NavBar>
 		    <div className="articleDetailContainer">
               <h2>{newState.data&&newState.data.post.title}</h2>
