@@ -57,7 +57,7 @@ const RouterList = () => (
         <div>
             <Switch>
               <Route exact path="/" component={Tabs}/>
-              <Route path="/article/:id/:type" component={ArticleDetail}/>
+              <Route path="/post/:id" component={ArticleDetail}/>
               <Route path="/Lists" component={List}/>
             </Switch>
         </div>

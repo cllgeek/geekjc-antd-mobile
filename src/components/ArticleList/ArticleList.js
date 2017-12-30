@@ -39,10 +39,10 @@ const newState = new ArticleListState()
 @observer
 class ArticleListTab extends Component{
 	componentWillMount() {
-		newState.initData('/fetch/results?cat=前端开发&p=0')
+		newState.initData('/fetch/results?t=postlist&cat=前端开发&p=0')
 	}
 	tabChange = (tab,index) => {
-		let url = `/fetch/results?cat=${tab.title}&p=0`
+		let url = `/fetch/results?t=postlist&cat=${tab.title}&p=0`
         newState.initData(url)
 	}
 	render(){
@@ -54,11 +54,11 @@ class ArticleListTab extends Component{
 			       	{newState.data&&newState.data.results.map((v,k)=>
                       <li key={k} className="articleListLi">
 			            <p>{v.author}·<span>{ v.meta?moment(v.meta.createAt).format('MM/DD/YYYY'):''}</span></p>
-			            <a onClick={()=>{this.props.history.push(`/article/${v._id}/${val.title}`)}} className="articleListTitle">{v.title}</a>
-			            <a onClick={()=>{this.props.history.push(`/article/${v._id}/${val.title}`)}} className="articleListDescribe" dangerouslySetInnerHTML={{ __html:`${marked(v.content.slice(0,100))}...` }} />
+			            <a onClick={()=>{this.props.history.push(`/post/${v._id}`)}} className="articleListTitle">{v.title}</a>
+			            <a onClick={()=>{this.props.history.push(`/post/${v._id}`)}} className="articleListDescribe" dangerouslySetInnerHTML={{ __html:`${marked(v.content.slice(0,100))}...` }} />
 			            <div className="articleListFooter">
 			              <span>pv:{v.pv}</span>
-			              <a onClick={()=>{this.props.history.push(`/article/${v._id}/${val.title}`)}} className="readAll">阅读全文</a>
+			              <a onClick={()=>{this.props.history.push(`/post/${v._id}`)}} className="readAll">阅读全文</a>
 			            </div>
 			          </li>
 			       	)}

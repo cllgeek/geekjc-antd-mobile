@@ -15,13 +15,11 @@ useStrict(true)
 
 class ArticleDetailState {
   @observable data = null
-  @observable type = null
-  @action initData = (url,type) => {
+  @action initData = (url) => {
   	request.get(url)
       .then((response)=>{
       	runInAction("获取文章内容",()=>{
           this.data = response.data
-          this.type = type
       	})
     })
   }
@@ -34,21 +32,20 @@ class ArticleDetail extends Component{
 	componentWillMount(){
 		const { props } = this
 		const id = props.match.params.id
-		const type = props.match.params.type
-		newState.initData(`/fetch/post/${id}`,type)
+		newState.initData(`/fetch/post/${id}`)
 	}
 	render(){
 		return(
           <div>
             <NavBar
-		      mode="light"
-		      icon={<Icon type="left" />}
-		      onLeftClick={() => this.props.history.push('/')}
-		      rightContent={[
-		        <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-		        <Icon key="1" type="ellipsis" />,
-		      ]}
-		    >{newState.type&&newState.type}</NavBar>
+							mode="light"
+							icon={<Icon type="left" />}
+							onLeftClick={() => this.props.history.push('/')}
+							rightContent={[
+								<Icon key="0" type="search" style={{ marginRight: '16px' }} />,
+								<Icon key="1" type="ellipsis" />,
+							]}
+		    ></NavBar>
 		    <div className="articleDetailContainer">
               <h2>{newState.data&&newState.data.post.title}</h2>
               <div className="articleDetailInfo">
