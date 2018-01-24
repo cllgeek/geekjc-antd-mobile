@@ -11,6 +11,7 @@ import './ArticleDetail.less'
 
 import request from '../../utils/request'
 
+
 useStrict(true)
 
 class ArticleDetailState {

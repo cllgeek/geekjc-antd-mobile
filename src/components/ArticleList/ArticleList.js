@@ -13,6 +13,10 @@ import request from '../../utils/request'
 
 useStrict(true)
 
+class CallApi {
+	getItemList = (url) => request.get(url)
+}
+
 class ArticleListState {
   @observable tabs =[
 	 {title:"前端开发"},
@@ -21,20 +25,25 @@ class ArticleListState {
 	 {title:"相关工具"},
 	 {title:"其它相关"},
 	 {title:"福利页面"}
-  ]
+	]
+	
+	constructor(callApi){
+		this.callApi = callApi
+	}
+
   @observable data = null
   @observable num = 0
-  @action initData = (url) => {
-  	request.get(url)
-      .then((response)=>{
-      	runInAction("获取文章列表",()=>{
-          this.data = response.data
-      	})
-    })
+  @action initData = async (url) => {
+
+		const data = await this.callApi.getItemList(url)
+		runInAction("获取文章列表",()=>{
+			this.data = data.data
+		})
   }
 }
 
-const newState = new ArticleListState()
+const callApi = new CallApi()
+const newState = new ArticleListState(callApi)
 
 @observer
 class ArticleListTab extends Component{
@@ -43,11 +52,11 @@ class ArticleListTab extends Component{
 	}
 	tabChange = (tab,index) => {
 		let url = `/fetch/results?t=postlist&cat=${tab.title}&p=0`
-        newState.initData(url)
+    newState.initData(url)
 	}
 	render(){
 	    return (
-	         <Tabs tabs={newState.tabs} onTabClick={this.tabChange} onChange={this.tabChange} swipeable="false" useOnPan="false">
+	         <Tabs tabs={newState.tabs} onChange={this.tabChange} swipeable="false" useOnPan="false">
 	           {newState.tabs.map((val,i)=>
                  <div key={i}>
 			       <ul className="articleListUl">

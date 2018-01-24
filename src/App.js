@@ -3,7 +3,8 @@ import {BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom'//å¯¼å
 
 import { Tabs,ArticleDetail } from './components'
 
-
+import { observable } from 'mobx';
+import { Provider } from 'mobx-react';
 
 import './App.less'
 
@@ -52,6 +53,11 @@ const List = ({ match }) => (
     </div>
 )
 
+const testObj = observable({
+    a: '2',
+    b: '3'
+})
+
 const RouterList = () => (
     <Router>
         <div>
@@ -63,4 +69,11 @@ const RouterList = () => (
         </div>
     </Router>
 )
-export default RouterList
+
+const App = () => (
+    <Provider testObj={testObj}>
+        <RouterList />
+    </Provider>    
+)
+
+export default App
