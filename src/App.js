@@ -73,7 +73,7 @@ const RouterList = () => (
 const App = () => (
     <Provider testObj={testObj}>
         <RouterList />
-    </Provider>    
+    </Provider>
 )
 
 export default App

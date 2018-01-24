@@ -1,8 +1,10 @@
 import React from 'react'
 import { Flex,SearchBar,WingBlank,WhiteSpace } from 'antd-mobile'
+
 import CustomIcon from '../CustomIcon/CustomIcon'
 import CarouselComponent from './Carousel'
-import ArticleList from '../ArticleList/ArticleList'
+import Category from '../Category'
+
 import { inject } from 'mobx-react';
 
 import './Index.less'
@@ -16,14 +18,14 @@ class Index extends React.Component{
 		}
 	}
 	renderCarousel = () => {
-		
+
 	}
 	render(){
 		return(
 		  <div className="indexContainer">
 				<div className="header">
-					<WingBlank size="md">
-						<Flex justify={'center'}> 
+					<WingBlank size='md'>
+						<Flex justify={'center'}>
 							<Flex.Item>
 								<img src="https://geekjc-img.geekjc.com/logo-rn.png" alt="logo.png" className="logo" />
 							</Flex.Item>
@@ -34,12 +36,17 @@ class Index extends React.Component{
 								<h1>极客教程</h1>
 							</Flex.Item>
 							<Flex.Item>
-								<CustomIcon type={require('../../svg/menu.svg')} size="md" />
+								<CustomIcon type={require('../../svg/menu.svg')} size='md' />
 							</Flex.Item>
 						</Flex>
 					</WingBlank>
 				</div>
-				<CarouselComponent />
+				<WingBlank size='md'>
+					<CarouselComponent />
+				</WingBlank>
+				<WingBlank size='md'>
+					<Category />
+				</WingBlank>
 		  </div>
 		)
 	}

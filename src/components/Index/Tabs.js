@@ -1,16 +1,35 @@
 import React from 'react'
 import { TabBar } from 'antd-mobile';
+import { withRouter } from 'react-router-dom'
+import ArticleList from '../ArticleList/ArticleList'
 
 import CustomIcon from '../CustomIcon/CustomIcon.js'
 import Index from './Index.js'
 
-export default class Tabs extends React.Component {
+import getUrlQuery from '../../utils/getUrlQuery'
+
+class Tabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'blueTab',
+      selectedTab: 'home',
     };
-  }
+	}
+
+
+	componentWillMount() {
+		const { search } = this.props.location
+		if(search !== ''){
+			const query = getUrlQuery(search)
+			console.log(query)
+			switch(query.type){
+				case 'article':
+					this.setState({selectedTab: query.type})
+					break;
+			}
+		}
+	}
+
 
   renderContent(pageText) {
     return (
@@ -21,6 +40,7 @@ export default class Tabs extends React.Component {
   }
 
   render() {
+		const { props } = this
     return (
       <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
         <TabBar
@@ -36,12 +56,12 @@ export default class Tabs extends React.Component {
               <CustomIcon type={require('../../svg/index.svg')} size="xxs" />
             }
             selectedIcon={
-              <CustomIcon type={require('../../svg/indexActive.svg')} size="xxs" />
+              <CustomIcon type={require('../../svg/index_active.svg')} size="xxs" />
             }
-            selected={this.state.selectedTab === 'blueTab'}
+            selected={this.state.selectedTab === 'home'}
             onPress={() => {
               this.setState({
-                selectedTab: 'blueTab',
+                selectedTab: 'home',
               });
             }}
             data-seed="logId"
@@ -50,29 +70,30 @@ export default class Tabs extends React.Component {
           </TabBar.Item>
           <TabBar.Item
             icon={
-              <CustomIcon type={require('../../svg/index.svg')} size="xxs" />
+              <CustomIcon type={require('../../svg/article.svg')} size="xxs" />
             }
             selectedIcon={
-              <CustomIcon type={require('../../svg/indexActive.svg')} size="xxs" />
+              <CustomIcon type={require('../../svg/article_active.svg')} size="xxs" />
             }
-            title="暂无"
+            title="文章"
             key="none1"
-            selected={this.state.selectedTab === 'redTab'}
+            selected={this.state.selectedTab === 'article'}
             onPress={() => {
+							props.history.push('/?type=article')
               this.setState({
-                selectedTab: 'redTab',
+                selectedTab: 'article',
               });
             }}
             data-seed="logId1"
           >
-            {this.renderContent('none1')}
+						<ArticleList />
           </TabBar.Item>
           <TabBar.Item
             icon={
               <CustomIcon type={require('../../svg/index.svg')} size="xxs" />
             }
             selectedIcon={
-              <CustomIcon type={require('../../svg/indexActive.svg')} size="xxs" />
+              <CustomIcon type={require('../../svg/index_active.svg')} size="xxs" />
             }
             title="暂无"
             key="none2"
@@ -91,7 +112,7 @@ export default class Tabs extends React.Component {
               <CustomIcon type={require('../../svg/index.svg')} size="xxs" />
             }
             selectedIcon={
-              <CustomIcon type={require('../../svg/indexActive.svg')} size="xxs" />
+              <CustomIcon type={require('../../svg/index_active.svg')} size="xxs" />
             }
             title="暂无"
             key="none3"
@@ -109,3 +130,5 @@ export default class Tabs extends React.Component {
     );
   }
 }
+
+export default withRouter(Tabs)
