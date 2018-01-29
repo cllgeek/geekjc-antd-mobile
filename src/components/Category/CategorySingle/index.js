@@ -19,7 +19,7 @@ export default class CategorySingle extends Component{
     return(
       <div className={`${prefixClass}`}>
 				<WhiteSpace size='md' />
-        <div>
+        <div className={`${prefixClass}-title`}>
           <h2>
             {this.props.name}
             { books.length==6 ?
@@ -28,10 +28,15 @@ export default class CategorySingle extends Component{
           </h2>
         </div>
         <Flex>
-          {books.map((item,index)=>
-            <Flex.Item span={4} key={index}>
-              <SingleCard book={item} />
-            </Flex.Item>
+          {books.map((item,index)=> {
+						if(index<3){
+							return(
+								<Flex.Item key={index}>
+									<SingleCard book={item} />
+								</Flex.Item>
+							)
+						}
+					}
           )}
         </Flex>
       </div>

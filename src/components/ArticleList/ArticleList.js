@@ -26,7 +26,7 @@ class ArticleListState {
 	 {title:"其它相关"},
 	 {title:"福利页面"}
 	]
-	
+
 	constructor(callApi){
 		this.callApi = callApi
 	}
@@ -92,7 +92,7 @@ class ArticleList extends Component{
 		return(
           <div className="articleListContainer">
             <WrapperArticleListTab />
-          </div>    
+          </div>
 		)
 	}
 }

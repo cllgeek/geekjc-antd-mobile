@@ -60,13 +60,16 @@ class Tabs extends React.Component {
             }
             selected={this.state.selectedTab === 'home'}
             onPress={() => {
+							props.history.push('/')
               this.setState({
                 selectedTab: 'home',
               });
             }}
             data-seed="logId"
           >
-            <Index />
+						{ this.state.selectedTab === 'home' ?
+							<Index /> : ''
+						}
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -86,7 +89,9 @@ class Tabs extends React.Component {
             }}
             data-seed="logId1"
           >
-						<ArticleList />
+						{ this.state.selectedTab === 'article' ?
+							<ArticleList /> : ''
+						}
           </TabBar.Item>
           <TabBar.Item
             icon={
