@@ -1,7 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom'//导入的方式跟之前有点变化
-
-import { Tabs,ArticleDetail,BookDetail } from './components'
+import Bundle from './components/Bundle'
 
 import { observable } from 'mobx';
 import { Provider } from 'mobx-react';
@@ -57,6 +56,24 @@ const testObj = observable({
     a: '2',
     b: '3'
 })
+
+const Tabs = (props) => (
+	<Bundle load={ () => import('./functions/Index/Tabs')}>
+		{ (Tabs) => <Tabs {...props} /> }
+	</Bundle>
+)
+
+const ArticleDetail = (props) => (
+	<Bundle load={ () => import('./functions/ArticleDetail')}>
+		{ (ArticleDetail) => <ArticleDetail {...props} /> }
+	</Bundle>
+)
+
+const BookDetail = (props) => (
+	<Bundle load={ () => import('./functions/BookDetail')}>
+		{ (BookDetail) => <BookDetail {...props} /> }
+	</Bundle>
+)
 
 const RouterList = () => (
     <Router>

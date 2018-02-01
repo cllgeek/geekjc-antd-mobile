@@ -2,7 +2,7 @@ import React,{ Component } from 'react'
 import { WhiteSpace,Grid } from 'antd-mobile'
 import { Link } from 'react-router-dom'
 import SingleCard from '../SingleCard'
-import CustomIcon from '../../CustomIcon/CustomIcon'
+import CustomIcon from '../../../components/CustomIcon'
 import './index.less'
 
 const prefixClass = 'categorySingle'

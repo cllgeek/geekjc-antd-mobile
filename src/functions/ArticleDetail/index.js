@@ -6,7 +6,7 @@ import {observable, action, useStrict, runInAction} from 'mobx'
 import { observer } from 'mobx-react'
 import moment from 'moment'
 
-import './ArticleDetail.less'
+import './index.less'
 
 import request from '../../utils/request'
 

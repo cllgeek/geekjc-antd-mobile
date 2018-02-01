@@ -1,13 +1,13 @@
 import React from 'react'
 import { Flex, WingBlank } from 'antd-mobile'
 
-import CustomIcon from '../CustomIcon/CustomIcon'
+import CustomIcon from '../../components/CustomIcon'
 import CarouselComponent from './Carousel'
 import Category from '../Category'
 
 import { inject } from 'mobx-react';
 
-import './Index.less'
+import './index.less'
 
 @inject('testObj')
 class Index extends React.Component{

@@ -1,7 +1,7 @@
 import React from "react";
 import { WhiteSpace, Carousel } from "antd-mobile";
 
-import './Index.less'
+import './index.less'
 
 class CarouselComponet extends React.Component {
   constructor(props){

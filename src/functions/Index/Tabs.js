@@ -1,10 +1,10 @@
 import React from 'react'
 import { TabBar } from 'antd-mobile';
 import { withRouter } from 'react-router-dom'
-import ArticleList from '../ArticleList/ArticleList'
+import ArticleList from '../ArticleList/index'
 
-import CustomIcon from '../CustomIcon/CustomIcon.js'
-import Index from './Index.js'
+import CustomIcon from '../../components/CustomIcon'
+import Index from './index.js'
 
 import getUrlQuery from '../../utils/getUrlQuery'
 

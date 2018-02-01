@@ -7,7 +7,7 @@ import { observer } from 'mobx-react'
 import moment from 'moment'
 import marked from 'marked'
 
-import './ArticleList.less'
+import './index.less'
 
 import request from '../../utils/request'
 

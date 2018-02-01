@@ -1,6 +1,6 @@
 import React,{ Component } from 'react'
 import { Link } from 'react-router-dom'
-import CustomIcon from '../../CustomIcon/CustomIcon'
+import CustomIcon from '../../../components/CustomIcon'
 import './index.less'
 
 const prefixclass = 'singleCard'
