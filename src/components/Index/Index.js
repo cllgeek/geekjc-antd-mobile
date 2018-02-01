@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex,SearchBar,WingBlank,WhiteSpace } from 'antd-mobile'
+import { Flex, WingBlank } from 'antd-mobile'
 
 import CustomIcon from '../CustomIcon/CustomIcon'
 import CarouselComponent from './Carousel'

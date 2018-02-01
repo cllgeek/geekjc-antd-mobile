@@ -5,6 +5,7 @@ import { observer } from 'mobx-react'
 import request from '../../utils/request'
 import './index.less'
 
+useStrict(true)
 class CallApi {
 	getCategoryList = (url) => request.get(url)
 }
@@ -29,7 +30,6 @@ class IndexState {
 		const data = await this.callApi.getCategoryList(url)
 		runInAction("获取首页列表",()=>{
 			this.data = data.data
-			console.log(this.data)
 		})
   }
 }
@@ -39,9 +39,6 @@ const newState = new IndexState(callApi)
 
 @observer
 class Category extends React.Component{
-    constructor(props){
-      super(props);
-		}
 		componentWillMount() {
 			newState.initData('/admin/categoryNote/list')
 		}

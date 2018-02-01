@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom'//导入的方式跟之前有点变化
 
-import { Tabs,ArticleDetail } from './components'
+import { Tabs,ArticleDetail,BookDetail } from './components'
 
 import { observable } from 'mobx';
 import { Provider } from 'mobx-react';
@@ -63,8 +63,9 @@ const RouterList = () => (
         <div>
             <Switch>
               <Route exact path="/" component={Tabs}/>
-              <Route path="/post/:id" component={ArticleDetail}/>
-              <Route path="/Lists" component={List}/>
+              <Route exact path="/post/:id" component={ArticleDetail}/>
+							<Route exact path="/book/:id" component={BookDetail}/>
+              <Route exact path="/Lists" component={List}/>
             </Switch>
         </div>
     </Router>

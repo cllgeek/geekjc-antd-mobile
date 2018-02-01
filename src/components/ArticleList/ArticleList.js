@@ -1,6 +1,6 @@
 import React,{ Component } from 'react'
-import { Tabs, Button} from 'antd-mobile'
-import {BrowserRouter as Router,Route,Link,withRouter} from 'react-router-dom'//导入的方式跟之前有点变化
+import { Tabs } from 'antd-mobile'
+import {withRouter} from 'react-router-dom'//导入的方式跟之前有点变化
 
 import {observable, action, useStrict, runInAction} from 'mobx'
 import { observer } from 'mobx-react'

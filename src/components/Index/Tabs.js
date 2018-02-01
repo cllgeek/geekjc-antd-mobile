@@ -26,6 +26,8 @@ class Tabs extends React.Component {
 				case 'article':
 					this.setState({selectedTab: query.type})
 					break;
+				default:
+					return
 			}
 		}
 	}

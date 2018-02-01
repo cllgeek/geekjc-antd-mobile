@@ -10,9 +10,9 @@ export default class SingleCard extends Component{
     return(
       <div className={`${prefixclass}`}>
          <div className="mask"></div>
-         { book.bookUrl ? <a href={book.bookUrl} style={{color:'#77787E'}} target="_blank"><img src={book.img} className={`${prefixclass}-img`}/></a>
+         { book.bookUrl ? <a href={book.bookUrl} style={{color:'#77787E'}} target="_blank"><img alt={book.title} src={book.img} className={`${prefixclass}-img`}/></a>
            :
-           <Link to={`/book/${book._id}`} style={{color:'#77787E'}}><img src={book.img} className={`${prefixclass}-img`}/></Link>
+           <Link to={`/book/${book._id}`} style={{color:'#77787E'}}><img alt={book.title} src={book.img} className={`${prefixclass}-img`}/></Link>
          }
          { book.bookUrl ? <a className={`${prefixclass}-p`} href={book.bookUrl} style={{color:'#77787E'}} target="_blank" rel="external nofollow">{book.title}</a>
 					 :
