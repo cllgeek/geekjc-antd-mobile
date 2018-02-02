@@ -105,7 +105,8 @@
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "style-loader": "^0.18.2",
-    "svg-sprite-loader": "^0.3.1"
+    "svg-sprite-loader": "^0.3.1",
+    "webpack-bundle-analyzer": "^2.9.2"
   },
   "theme": {
     "hd": "2px"
