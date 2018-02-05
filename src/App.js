@@ -1,9 +1,15 @@
 import React from 'react'
 import {BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom'//导入的方式跟之前有点变化
-import Bundle from './components/Bundle'
+// import Bundle from './components/Bundle'
 
 import { observable } from 'mobx';
 import { Provider } from 'mobx-react';
+
+import Loadable from 'react-loadable'
+
+// import Tabs from './functions/Index/Tabs'
+// import ArticleDetail from './functions/ArticleDetail'
+// import BookDetail from './functions/BookDetail'
 
 import './App.less'
 
@@ -52,41 +58,83 @@ const List = ({ match }) => (
     </div>
 )
 
-const testObj = observable({
-    a: '2',
-    b: '3'
-})
+function Loading(props) {
+  if (props.error) {
+    return <div>Error!</div>;
+  } else if (props.pastDelay) {
+    return <div>Loading...</div>;
+  } else {
+    return null;
+  }
+}
 
-const Tabs = (props) => (
-	<Bundle load={ () => import('./functions/Index/Tabs')}>
-		{ (Tabs) => <Tabs {...props} /> }
-	</Bundle>
-)
+const LoadableTabs= Loadable({
+  loader: () => import('./functions/Index/Tabs'),
+	loading: Loading,
+	delay: 300
+});
 
-const ArticleDetail = (props) => (
-	<Bundle load={ () => import('./functions/ArticleDetail')}>
-		{ (ArticleDetail) => <ArticleDetail {...props} /> }
-	</Bundle>
-)
+const LoadableArticleDetail= Loadable({
+  loader: () => import('./functions/ArticleDetail'),
+	loading: Loading,
+	delay: 300
+});
 
-const BookDetail = (props) => (
-	<Bundle load={ () => import('./functions/BookDetail')}>
-		{ (BookDetail) => <BookDetail {...props} /> }
-	</Bundle>
-)
+const LoadableBookDetail= Loadable({
+  loader: () => import('./functions/BookDetail'),
+	loading: Loading,
+	delay: 300
+});
 
+// const Tabs = (props) => (
+// 	<Bundle load={ () => import('./functions/Index/Tabs')}>
+// 		{ (Tabs) => <Tabs {...props} /> }
+// 	</Bundle>
+// )
+
+// const ArticleDetail = (props) => (
+// 	<Bundle load={ () => import('./functions/ArticleDetail')}>
+// 		{ (ArticleDetail) => <ArticleDetail {...props} /> }
+// 	</Bundle>
+// )
+
+// const BookDetail = (props) => (
+// 	<Bundle load={ () => import('./functions/BookDetail')}>
+// 		{ (BookDetail) => <BookDetail {...props} /> }
+// 	</Bundle>
+// )
+
+// const RouterList = () => (
+//     <Router>
+//         <div>
+//             <Switch>
+//               <Route exact path="/" component={Tabs}/>
+//               <Route exact path="/post/:id" component={ArticleDetail}/>
+// 							<Route exact path="/book/:id" component={BookDetail}/>
+//               <Route exact path="/Lists" component={List}/>
+//             </Switch>
+//         </div>
+//     </Router>
+// )
+
+// 运用react-loading 进行划分
 const RouterList = () => (
-    <Router>
-        <div>
-            <Switch>
-              <Route exact path="/" component={Tabs}/>
-              <Route exact path="/post/:id" component={ArticleDetail}/>
-							<Route exact path="/book/:id" component={BookDetail}/>
-              <Route exact path="/Lists" component={List}/>
-            </Switch>
-        </div>
-    </Router>
+	<Router>
+			<div>
+					<Switch>
+						<Route exact path="/" component={LoadableTabs}/>
+						<Route exact path="/post/:id" component={LoadableArticleDetail}/>
+						<Route exact path="/book/:id" component={LoadableBookDetail}/>
+						<Route exact path="/Lists" component={List}/>
+					</Switch>
+			</div>
+	</Router>
 )
+
+const testObj = observable({
+	a: '2',
+	b: '3'
+})
 
 const App = () => (
     <Provider testObj={testObj}>

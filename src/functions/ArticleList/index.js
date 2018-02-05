@@ -32,7 +32,7 @@ class ArticleListState {
 	}
 
   @observable data = null
-  @observable num = 0
+
   @action initData = async (url) => {
 
 		const data = await this.callApi.getItemList(url)

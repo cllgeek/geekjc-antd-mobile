@@ -110,7 +110,12 @@ function build(previousFileSizes) {
       if (err) {
         return reject(err);
       }
-      const messages = formatWebpackMessages(stats.toJson({}, true));
+			// const messages = formatWebpackMessages(stats.toJson({}, true));
+			const statsMes = stats.toJson({ timings: true });
+			const messages = formatWebpackMessages(statsMes);
+			/* eslint-disable  */
+			// console.log('打包使用时间:', statsMes.time); 加了webpack-dashbord 之后不需要了
+			/* eslint-enable  */
       if (messages.errors.length) {
         // Only keep the first error. Others are often indicative
         // of the same problem, but confuse the reader with noise.

@@ -1,5 +1,6 @@
 import { Component } from 'react'
 
+// 按需加载组件，和react-loadable 差不多 建议有react-loadable
 export default class Bundle extends Component {
 	constructor(props) {
 			super(props);

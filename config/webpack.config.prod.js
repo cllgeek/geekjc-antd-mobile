@@ -15,6 +15,9 @@ const getClientEnvironment = require('./env');
 const pxtorem = require('postcss-pxtorem');
 const theme = require('../package.json').theme;
 
+const Dashboard = require('webpack-dashboard');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+const dashboard = new Dashboard();
 // 分析包体依赖
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -273,6 +276,7 @@ module.exports = {
     ],
   },
   plugins: [
+		new DashboardPlugin(dashboard.setData),
 		new BundleAnalyzerPlugin(),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:

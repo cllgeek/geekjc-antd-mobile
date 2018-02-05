@@ -1,12 +1,52 @@
 import React from 'react'
 import { TabBar } from 'antd-mobile';
 import { withRouter } from 'react-router-dom'
-import ArticleList from '../ArticleList/index'
 
 import CustomIcon from '../../components/CustomIcon'
-import Index from './index.js'
+
+import Loadable from 'react-loadable'
 
 import getUrlQuery from '../../utils/getUrlQuery'
+
+function Loading(props) {
+  if (props.error) {
+    return <div>Error!</div>;
+  } else if (props.pastDelay) {
+    return <div>Loading...</div>;
+  } else {
+    return null;
+  }
+}
+
+const LoadableIndex= Loadable({
+  loader: () => import('./index'),
+	loading: Loading,
+	delay: 300
+});
+
+const LoadableArticleList= Loadable({
+  loader: () => import('../ArticleList/index'),
+	loading: Loading,
+	delay: 300
+});
+
+const LoadableNbcollect= Loadable({
+  loader: () => import('../Nbcollect/index'),
+	loading: Loading,
+	delay: 300
+});
+
+// const LoadableIndex = (props) => (
+// 	<Bundle load={ () => import('./index')}>
+// 		{ (LoadableIndex) => <LoadableIndex {...props} /> }
+// 	</Bundle>
+// )
+
+// const LoadableArticleList = (props) => (
+// 	<Bundle load={ () => import('../ArticleList/index')}>
+// 		{ (LoadableArticleList) => <LoadableArticleList {...props} /> }
+// 	</Bundle>
+// )
 
 class Tabs extends React.Component {
   constructor(props) {
@@ -24,6 +64,9 @@ class Tabs extends React.Component {
 			console.log(query)
 			switch(query.type){
 				case 'article':
+					this.setState({selectedTab: query.type})
+					break;
+				case 'nbcollect':
 					this.setState({selectedTab: query.type})
 					break;
 				default:
@@ -70,7 +113,7 @@ class Tabs extends React.Component {
             data-seed="logId"
           >
 						{ this.state.selectedTab === 'home' ?
-							<Index /> : ''
+							<LoadableIndex /> : ''
 						}
           </TabBar.Item>
           <TabBar.Item
@@ -92,27 +135,29 @@ class Tabs extends React.Component {
             data-seed="logId1"
           >
 						{ this.state.selectedTab === 'article' ?
-							<ArticleList /> : ''
+							<LoadableArticleList /> : ''
 						}
           </TabBar.Item>
           <TabBar.Item
             icon={
-              <CustomIcon type={require('../../svg/index.svg')} size="xxs" />
+              <CustomIcon type={require('../../svg/blogger.svg')} size="xxs" />
             }
             selectedIcon={
-              <CustomIcon type={require('../../svg/index_active.svg')} size="xxs" />
+              <CustomIcon type={require('../../svg/blogger_active.svg')} size="xxs" />
             }
-            title="暂无"
+            title="牛人博客"
             key="none2"
-            dot
-            selected={this.state.selectedTab === 'greenTab'}
+            selected={this.state.selectedTab === 'nbcollect'}
             onPress={() => {
+							props.history.push('/?type=nbcollect&p=0')
               this.setState({
-                selectedTab: 'greenTab',
+                selectedTab: 'nbcollect',
               });
             }}
           >
-            {this.renderContent('none2')}
+            { this.state.selectedTab === 'nbcollect' ?
+							<LoadableNbcollect /> : ''
+						}
           </TabBar.Item>
           <TabBar.Item
             icon={
