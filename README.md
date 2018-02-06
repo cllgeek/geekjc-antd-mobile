@@ -26,3 +26,4 @@
 
 # License
 MIT
+![MIT](https://cllgeek.github.io/svg/license/mit.svg)
