@@ -46,7 +46,7 @@ class Category extends React.Component{
 			// const { names,bookAll }= this.props
       return(
         <div>
-          {newState.data&&newState.data.names.map((item,index)=>
+					{newState.data&&newState.data.names.map((item,index)=>
             <CategorySingle key={index} name={item} books={newState.data&&newState.data.bookAll[index]} />
            )
 					}

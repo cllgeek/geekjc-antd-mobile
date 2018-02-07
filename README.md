@@ -1,4 +1,9 @@
 # [极客教程](https://www.geekjc.com)mobile版本
+[![](https://img.shields.io/github/issues/cllgeek/geekjc-antd-mobile.svg)](https://github.com/cllgeek/geekjc-antd-mobile/issues)
+[![](https://img.shields.io/github/forks/cllgeek/geekjc-antd-mobile.svg)](https://github.com/cllgeek/geekjc-antd-mobile/network)
+[![](https://img.shields.io/github/stars/cllgeek/geekjc-antd-mobile.svg)](https://github.com/cllgeek/geekjc-antd-mobile/stargazers)
+![](https://img.shields.io/github/license/cllgeek/geekjc-antd-mobile.svg)
+
 基于的技术栈: react,react-route 4,mobx
 
 ## 运行本项目

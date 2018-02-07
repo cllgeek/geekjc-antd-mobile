@@ -1,5 +1,5 @@
 import React,{ Component } from 'react'
-import { Modal,Pagination,WingBlank,WhiteSpace } from 'antd-mobile'
+import { Modal,Pagination,WingBlank,WhiteSpace,Grid } from 'antd-mobile'
 import {withRouter} from 'react-router-dom'
 
 import {observable, action, useStrict, runInAction} from 'mobx'
@@ -84,17 +84,23 @@ class Nbcollect extends Component{
 										)}
 									</div>
 								<ul className={`${prefixclass}-ul`}>
-									{ notTops&&notTops.map((val,i)=>
-											<a className={`${prefixclass}-singleCard`} key={i} onClick={()=>{this.setState({modalVisile:true,currentNb:val})}}>
+									<Grid
+										style={{clear:'both'}}
+										hasLine={false}
+										data={notTops}
+										columnNum={3}
+										renderItem={val => (
+											<a className={`${prefixclass}-singleCard`} onClick={()=>{this.setState({modalVisile:true,currentNb:val})}}>
 												<img src={val.img_url} width="80" height="80" alt={val.name} />
 												<span className={`${prefixclass}-tit`}>{val.name}</span>
 												<span className={`${prefixclass}-tag`}>{val.introduce}</span>
 											</a>
-									) }
+										)}
+									/>
 								</ul>
 								</div>
                 <Pagination
-                  style={{margin:"20px"}}
+                  style={{margin:"20px 0"}}
                   className="ant-table-pagination"
                   total={total}
                   current={newState.data&&newState.data.currentPage}

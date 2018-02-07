@@ -27,6 +27,7 @@ export default class CategorySingle extends Component{
         </div>
 				<Grid
 					style={{clear:'both'}}
+					hasLine={false}
 					data={books}
 					columnNum={3}
 					renderItem={dataItem => (
