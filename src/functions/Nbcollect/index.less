@@ -1,6 +1,8 @@
 .nbcollect{
 	color: #666;
 	font-size: 20px;
+	//关键代码 去移动端点击阴影
+	-webkit-tap-highlight-color:rgba(255,255,255,0);
 	&-container{
 		position: relative;
 		overflow: hidden;
@@ -28,9 +30,10 @@
 		overflow: hidden;
 		margin: 0 5px 10px;
 		font-size: 16px;
+		//关键代码 去移动端点击阴影
+		-webkit-tap-highlight-color:rgba(255,255,255,0);
 	}
 	&-singleCard:hover{
-		box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
 		border-color: #d6d6d6;
 	}
 	&-singleCard img{
