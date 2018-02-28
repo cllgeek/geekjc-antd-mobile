@@ -151,7 +151,8 @@ module.exports = {
               plugins: [
                 "transform-decorators-legacy",
                 ['import', { libraryName: 'antd-mobile', style: true }],
-              ],
+							],
+							// 如果用了less文件进行变量覆盖，就不需要按需引入了
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
@@ -237,7 +238,7 @@ module.exports = {
                   modifyVars: theme
                 },
               },
-            ],
+						],
           },
           {
             test: /\.(svg)$/i,

@@ -1,10 +1,10 @@
-@import "~antd-mobile/dist/antd-mobile.less";
+// 用 less 文件进行变量覆盖。注意：这种方式已经载入了所有组件的样式，不需要也无法和按需加载插件 babel-plugin-import 的 style 属性一起使用。
+// @import "~antd-mobile/dist/antd-mobile.less";
 @import "./highLight.less";
 
 * {
     margin: 0;
 		padding: 0;
-		-webkit-overflow-scrolling:touch;
 }
 em,i {
     font-style: normal
@@ -86,4 +86,25 @@ a:hover {
 }
 .am-grid .am-flexbox .am-flexbox-item.am-grid-item-active .am-grid-item-content{
 	background-color: #fff !important
+}
+
+.am-drawer.am-drawer-right .am-drawer-draghandle{
+	right: -20px !important
+}
+
+.am-icon {
+	fill: currentColor;
+	background-size: cover;
+	width: 0.44rem;
+	height: 0.44rem;
+}
+
+.am-icon-md {
+	width: 0.44rem;
+	height: 0.44rem;
+}
+
+.am-icon-xxs {
+	width: 0.3rem;
+	height: 0.3rem;
 }

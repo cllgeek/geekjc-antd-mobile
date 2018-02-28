@@ -127,7 +127,7 @@ class Tabs extends React.Component {
             key="none1"
             selected={this.state.selectedTab === 'article'}
             onPress={() => {
-							props.history.push('/?type=article')
+							props.history.push('/?type=article&page=0')
               this.setState({
                 selectedTab: 'article',
               });

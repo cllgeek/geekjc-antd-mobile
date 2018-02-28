@@ -13,7 +13,8 @@ export default class CategorySingle extends Component{
     this.context.router.push(`/containerlist?t=postlist&cat=${cat}&p=${p}`)
   }
   render(){
-    const { books } =this.props
+		let { books } =this.props
+		books = books.filter((val,i)=> val.bookUrl&&val.bookUrl!=='')
     return(
       <div className={`${prefixClass}`}>
 				<WhiteSpace size='md' />

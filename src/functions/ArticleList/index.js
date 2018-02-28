@@ -7,9 +7,10 @@ import { observer } from 'mobx-react'
 import moment from 'moment'
 import marked from 'marked'
 
-import './index.less'
-
 import request from '../../utils/request'
+import getUrlQuery from '../../utils/getUrlQuery'
+
+import './index.less'
 
 useStrict(true)
 
@@ -27,19 +28,26 @@ class ArticleListState {
 	 {title:"福利页面"}
 	]
 
+	@observable page = null
+
+	@observable data = null
+
 	constructor(callApi){
 		this.callApi = callApi
 	}
 
-  @observable data = null
-
+	//获取初始化数据
   @action initData = async (url) => {
-
 		const data = await this.callApi.getItemList(url)
 		runInAction("获取文章列表",()=>{
 			this.data = data.data
 		})
-  }
+	}
+
+	//tab改变
+	@action tabChangePage = (index) => {
+		this.page = index;
+	}
 }
 
 const callApi = new CallApi()
@@ -48,31 +56,39 @@ const newState = new ArticleListState(callApi)
 @observer
 class ArticleListTab extends Component{
 	componentWillMount() {
-		newState.initData('/fetch/results?t=postlist&cat=前端开发&p=0')
+		const { search } = this.props.location
+		const query = getUrlQuery(search)
+		const page = Number(query.page)
+		const cat = newState.tabs[page].title
+		newState.tabChangePage(page)
+		newState.initData(`/fetch/results?t=postlist&cat=${cat}&p=0`)
 	}
 	tabChange = (tab,index) => {
 		let url = `/fetch/results?t=postlist&cat=${tab.title}&p=0`
+		let pushUrl = `/?type=article&page=${index}`
+		this.props.history.push(pushUrl)
+		newState.tabChangePage(index)
     newState.initData(url)
 	}
 	render(){
 	    return (
-	         <Tabs tabs={newState.tabs} onChange={this.tabChange} swipeable="false" useOnPan="false">
+	         <Tabs tabs={newState.tabs} page={newState.page} onChange={this.tabChange} swipeable="false" useOnPan="false">
 	           {newState.tabs.map((val,i)=>
-                 <div key={i}>
-			       <ul className="articleListUl">
-			       	{newState.data&&newState.data.results.map((v,k)=>
-                      <li key={k} className="articleListLi">
-			            <p>{v.author}·<span>{ v.meta?moment(v.meta.createAt).format('MM/DD/YYYY'):''}</span></p>
-			            <a onClick={()=>{this.props.history.push(`/post/${v._id}`)}} className="articleListTitle">{v.title}</a>
-			            <a onClick={()=>{this.props.history.push(`/post/${v._id}`)}} className="articleListDescribe" dangerouslySetInnerHTML={{ __html:`${marked(v.content.slice(0,100))}...` }} />
-			            <div className="articleListFooter">
-			              <span>pv:{v.pv}</span>
-			              <a onClick={()=>{this.props.history.push(`/post/${v._id}`)}} className="readAll">阅读全文</a>
-			            </div>
-			          </li>
-			       	)}
-			       </ul>
-			     </div>
+                <div key={i}>
+									<ul className="articleListUl">
+										{newState.data&&newState.data.results.map((v,k)=>
+											<li key={k} className="articleListLi">
+												<p>{v.author}·<span>{ v.meta?moment(v.meta.createAt).format('MM/DD/YYYY'):''}</span></p>
+												<a onClick={()=>{this.props.history.push(`/post/${v._id}`)}} className="articleListTitle">{v.title}</a>
+												<a onClick={()=>{this.props.history.push(`/post/${v._id}`)}} className="articleListDescribe" dangerouslySetInnerHTML={{ __html:`${marked(v.content.slice(0,100))}...` }} />
+												<div className="articleListFooter">
+													<span>pv:{v.pv}</span>
+													<a onClick={()=>{this.props.history.push(`/post/${v._id}`)}} className="readAll">阅读全文</a>
+												</div>
+											</li>
+										)}
+									</ul>
+								</div>
 	           )}
 	         </Tabs>
 	    )
