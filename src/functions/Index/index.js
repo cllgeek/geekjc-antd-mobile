@@ -1,7 +1,8 @@
 import React from 'react'
-import { Flex, WingBlank, Drawer,List } from 'antd-mobile'
+import { Flex, WingBlank } from 'antd-mobile'
 
 import CustomIcon from '../../components/CustomIcon'
+import Gmenu from '../../components/Gmenu'
 import CarouselComponent from './Carousel'
 import Category from '../Category'
 
@@ -20,24 +21,20 @@ class Index extends React.Component{
 	constructor(props){
 		super(props)
 		this.state={
-			open: false
+			show: false
 		}
 	}
-	renderCarousel = () => {
 
+	onMaskClick = () => {
+    this.setState({
+			show: false,
+		})
 	}
-	onOpenChange = (...args) => {
-    console.log(args);
-    this.setState({ open: !this.state.open });
-  }
+	onOpenChange = () => {
+		this.setState({show: !this.state.show})
+	}
 	render(){
-		const sidebar = (<List>
-      {menus.map((val, index) => {
-        return (<List.Item key={index}
-          thumb={val.iconUrl}
-        >{val.title}</List.Item>);
-      })}
-    </List>);
+		const { show } = this.state;
 		return(
 		  <div className="indexContainer">
 			 <div className="header">
@@ -58,24 +55,17 @@ class Index extends React.Component{
 						</Flex>
 					</WingBlank>
 				</div>
-				<Drawer
-					className="my-drawer"
-					style={{ minHeight: document.documentElement.clientHeight }}
-					enableDragHandle
-					position="right"
-					touch={false}
-					contentStyle={{ color: '#A6A6A6', textAlign: 'center' }}
-					sidebar={sidebar}
-					open={this.state.open}
-					onOpenChange={this.onOpenChange}
-				>
-					<WingBlank size='md'>
+				<WingBlank size='md'>
 						<CarouselComponent />
-					</WingBlank>
-					<WingBlank size='md'>
-						<Category />
-					</WingBlank>
-				</Drawer>
+				</WingBlank>
+				<WingBlank size='md'>
+					<Category />
+				</WingBlank>
+				<Gmenu
+					data={menus}
+					show={show}
+					onMaskClick={this.onMaskClick}
+				/>
 		  </div>
 		)
 	}

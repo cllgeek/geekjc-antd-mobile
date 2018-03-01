@@ -1,0 +1,33 @@
+.Gmenu{
+	width: 400px;
+	padding: 20px;
+	top: 100px;
+	right: 0px;
+	position: absolute;
+	background-color: #fff;
+	z-index: 1000 !important;
+	li{
+		text-align: right;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #ddd
+	}
+	img{
+		width: 30px;
+		height: 30px;
+	}
+	span{
+		margin-right: 20px;
+		vertical-align: middle;
+
+	}
+	&-menu-mask {
+		content: ' ';
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		opacity: 0.4;
+		z-index: 79;
+	}
+}
