@@ -136,6 +136,23 @@ const testObj = observable({
 	b: '3'
 })
 
+class GEEK extends React.Component {
+	constructor(props){
+		super(props)
+		this.state={}
+	}
+	componentDidMount() {
+
+	}
+	render(){
+		return(
+			<div>这是一个极客教程组件</div>
+		)
+	}
+}
+
+console.log(<GEEK><div>这是GEEK组件</div></GEEK>)
+
 const App = () => (
     <Provider testObj={testObj}>
         <RouterList />

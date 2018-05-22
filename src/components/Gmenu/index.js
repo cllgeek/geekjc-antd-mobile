@@ -2,7 +2,7 @@
  * @Author: ll
  * @Date: 2018-03-01 10:40:25
  * @Last Modified by: ll
- * @Last Modified time: 2018-03-01 11:48:08
+ * @Last Modified time: 2018-03-01 22:49:44
  */
 import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
@@ -17,7 +17,7 @@ class Gmenu extends (Component || PureComponent) {
 		const menuEl = (
 			<ul className={prefixcls}>
 				{data.map((val,i)=>
-					<li>
+					<li key={i}>
 						<span>{val.title}</span>
 						<img src={val.iconUrl} alt={val.title} />
 					</li>

@@ -34,14 +34,12 @@ class ArticleDetail extends Component {
 		newState.initData(`/fetch/post/${id}`);
 	}
 	render() {
-		let host = window.location.host
-		let referrer = document.referrer
 		return (
 			<div>
 				<NavBar
 					mode="light"
 					icon={<Icon type="left" />}
-					onLeftClick={() => referrer.indexOf(host) > -1 ? this.props.history.goBack() : this.props.history.push('/')}
+					onLeftClick={() => this.props.history.goBack()}
 					rightContent={[
 						<Icon key="0" type="search" style={{ marginRight: "16px" }} />,
 						<Icon key="1" type="ellipsis" />

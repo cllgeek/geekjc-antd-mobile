@@ -24,7 +24,6 @@ class Index extends React.Component{
 			show: false
 		}
 	}
-
 	onMaskClick = () => {
     this.setState({
 			show: false,
