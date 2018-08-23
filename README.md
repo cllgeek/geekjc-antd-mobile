@@ -23,6 +23,7 @@
 
 #### 项目相关文章介绍
 * [react,react-router 4,mobx构建我的移动端web](https://www.geekjc.com/post/59db251559f92b5d491592d4)
+* [react 的数据管理方案：redux 还是 mobx？](http://imweb.io/topic/59f4833db72024f03c7f49b4)
 * [router-router 4 按需加载实践](https://www.geekjc.com/post/5a72f7585bd1340aebd9a630)
 * [Webpack 的应用包体尺寸优化](https://www.geekjc.com/post/5a7401e787eae410348f8043)
 
